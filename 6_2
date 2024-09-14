@@ -1,0 +1,47 @@
+2023/11/08 00:00|Домашнее задание по теме "Доступ к свойствам родителя. Переопределение свойств."
+class Vehicle:
+    __COLOR_VARIANTS = ['Red', 'Green', 'Blue', 'White', 'Black', 'Yellow', 'Gray']
+
+    def __init__(self, owner, mode, engine_power, color):
+        self.owner = str(owner)
+        self.__mode = str(mode)
+        self.__engine_power = int(engine_power)
+        self.__color = str(color)
+
+    def get_model(self):
+        print(f'Модель : {self.__mode}')
+
+    def get_horsepower(self):
+        print(f'Мощность двигателя: {self.__engine_power}')
+
+    def get_color(self):
+        print(f'Цвет машины: {self.__color}')
+
+    def print_info(self):
+        self.get_model()
+        self.get_horsepower()
+        self.get_color()
+        print(f'Владелец машины: {self.owner}\n')
+
+    def set_color(self,  new_color):
+        reg_color = [i.lower() for i in self.__COLOR_VARIANTS]
+        if new_color.lower() in reg_color:
+            print(f"Нельзя сменить цвет на {new_color}")
+        else:
+            self.__color = new_color
+class Sedan(Vehicle):
+    __PASSENGERS_LIMIT = 4
+
+
+avto1 = Sedan('Egor', 'KIA RIO', 115, 'Green')
+
+avto1.print_info()
+
+avto1.set_color('BLACK')
+avto1.owner = 'Maria'
+
+avto1.print_info()
+
+
+
+
